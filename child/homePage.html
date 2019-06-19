@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>StoneDoor</title>
+    <link type="text/css" rel="stylesheet" href="../css/index.css"/>
+</head>
+<style>
+    div{
+        position:absolute;
+    }
+    #d1{
+        top: 0;
+        white-space:nowrap;
+        overflow:hidden;
+        width:99%;
+        height:30%; }
+    #d2{
+        top: 30%;
+        width:15%;
+        height:69%;
+        border:1px solid white;
+        overflow:hidden;}
+    #d3{
+        top: 30%;
+        left: 15%;
+        width: 84%;
+        height: 69%;
+        border:1px solid white;
+    }
+</style>
+<body onload="create()">
+<div id="d1">
+    <img src="../images/1.jpg">
+    <img src="../images/2.jpg">
+</div>
+<div id="d2">
+    <a href="#" id="caisequan.html" onmouseover="del()" onmouseout="create()" onclick="myload(this.id)">1.彩色圈</a><br />
+    <a href="#" id="caihongquan.html"onmouseover="del()" onmouseout="create()" onclick="myload(this.id)">2.彩虹圈</a><br />
+</div>
+<div id="d3"></div>
+</body>
+<script src="../js/jquery-3.2.1.min.js"></script>
+<script>
+    function myload(href) {
+        $("#d3").load(href,function(){$("#d3").fadeIn(100);});
+    }
+
+    var pics=["../images/1.jpg","../images/2.jpg","../images/3.jpg","../images/4.jpg"];
+    function gundong1(){
+        var obj=document.getElementById("d1");
+        var tmp=obj.scrollLeft++;
+        if(tmp==obj.scrollLeft){
+            obj.innerHTML+=obj.innerHTML;
+        }
+    }
+    window.setInterval("gundong1()",20);
+
+    function gundong2(){
+        var obj=document.getElementById("d2");
+        var temp=obj.scrollTop++;
+        if(temp==obj.scrollTop){
+            obj.innerHTML+=obj.innerHTML;
+        }
+    }
+
+    var timer=0;
+    function create(){
+        if(timer==0){
+            timer=window.setInterval(gundong2,80);
+        }
+    }
+    function del(){
+        if(timer!=0){
+            window.clearInterval(timer);
+            timer=0;
+        }
+    }
+
+</script>
+</html>
