@@ -1,16 +1,17 @@
 var x=0;
 var y=0;
+var n=0;
 function bb(){
     isPen=true;
     aa();
     x=parseInt(Math.random()*window.innerWidth);
     y=parseInt(Math.random()*window.innerHeight);
+    n++;
+    if(n>1000){
+        window.clearInterval(a);
+    }
 }
-window.setInterval(bb,4);
-window.setInterval(bb,4);
-window.setInterval(bb,4);
-window.setInterval(bb,4);
-window.setInterval(bb,4);
+var a=window.setInterval(bb,4);
 function aa(){
     if(isPen){
         var c=document.getElementById("can");
